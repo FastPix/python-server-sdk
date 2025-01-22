@@ -1,0 +1,47 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.Python
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+*.egg
+
+# PyCharm / IntelliJ
+.idea/
+
+# VS Code
+.vscode/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# MacOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+
+# Python environment
+*.env
+*.venv
+.env/
+venv/
+ENV/
+
+# Secrets & sensitive information
+*.env
+*.secrets
+*.key
+*.pem

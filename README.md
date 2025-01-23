@@ -35,21 +35,19 @@ To get started with the **FastPix Python SDK**, ensure you have the following:
 
 # Installation:
 
-To install the SDK, use pip, the Python package manager, to easily download and install the required libraries.
+To install the SDK, use pip with the GitHub repository URL to easily download and install the required libraries.
 
 ```bash
-pip3 install fastpix
-
-# Advanced Installation (with Async support)
-pip3 install "fastpix[async]"
+pip install git+https://github.com/FastPix/python-server-sdk
 ```
+(you may need to run `pip` with root permission)
 
 # Basic Usage:
 
 ## Importing the SDK
 
 ```python
-from fastpix import Client as client
+from fastpix import Client
 ```
 
 ## Initialization:
@@ -57,20 +55,21 @@ from fastpix import Client as client
 Initialize the FastPix SDK with your API credentials.
 
 ```python
-from fastpix import Client as client
+from fastpix import Client
 
-client = client(username="your-access-token-id", password="your-secret-key")
+client = Client(username="your-access-token-id", password="your-secret-key")
 ```
 
 ## Example Usage:
 
 Below is an example of configuring `FastPix Python SDK` into your project.
 
+`Note:-` For Async SDK Users: When using the AsyncClient, all SDK methods must be prefixed with the await keyword.
 ```python
 # Sync Usage
-from fastpix import Client as client
+from fastpix import Client
 
-client = client(username="your-access-token-id", password="your-secret-key")
+client = Client(username="your-access-token-id", password="your-secret-key")
 
 # Define the parameters for fetching media assets in a separate variable.
 media_request_params = {
@@ -86,13 +85,12 @@ except Exception as e:
    print(f"Error fetching media: {str(e)}")
 
 # Async Usage 
-# Note for Async SDK Users: When using the AsyncClient, all API methods must be prefixed with the await keyword.
-from fastpix import AsyncClient as client
+from fastpix import AsyncClient as Client
 import asyncio
  
 async def main():
     # Initialize the AsyncClient with username and password.
-    client = client(username="your-access-token-id", password="your-secret-key")
+    client = Client(username="your-access-token-id", password="your-secret-key")
  
     # Define the parameters for fetching media assets in a separate variable.
     media_request_params = {
@@ -103,7 +101,7 @@ async def main():
  
     try:
         # Fetch media assets asynchronously using the await keyword.
-        media = await client_instance.media.get_all_media(params=media_request_params)
+        media = await client.media.get_all_media(params=media_request_params)
         print("Media:", media)
     except Exception as e:
         print(f"Error fetching media: {str(e)}")

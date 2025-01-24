@@ -2,15 +2,15 @@
 
 The FastPix Python SDK simplifies integration with the FastPix platform. This SDK is designed for secure and efficient communication with the FastPix API, enabling easy management of media uploads, live streaming, and simulcasting. It is intended for use with Python 3.7 or later.
 
-# Key Features:
+## Key Features:
 
-- ## Media API:
+- ### Media API:
 
   - **Upload Media**: Upload media files seamlessly from URLs or devices.
   - **Manage Media**: Perform operations such as listing, fetching, updating, and deleting media assets.
   - **Playback IDs**: Generate and manage playback IDs for media access.
 
-- ## Live API:
+- ### Live API:
 
   - **Create & Manage Live Streams:**: Create, list, update, and delete live streams effortlessly.
   - **Control Stream Access**: Generate playback IDs for live streams to control and manage access.
@@ -18,14 +18,14 @@ The FastPix Python SDK simplifies integration with the FastPix platform. This SD
 
 For detailed usage, refer to the [FastPix API Reference](https://docs.fastpix.io/reference).
 
-# Latest Release
+## Latest Release
   - Current Version: 1.0.0
    - View our [changelog](CHANELOG.md) for details on recent updates
    - Download the latest release from our [releases page](https://github.com/FastPix/python-server-sdk/releases/tag/v1.0.0)
 
-# Prerequisites:
+## Prerequisites:
 
-## Getting started with FastPix:
+### Getting started with FastPix:
 
 To get started with the **FastPix Python SDK**, ensure you have the following:
 
@@ -33,7 +33,7 @@ To get started with the **FastPix Python SDK**, ensure you have the following:
 
 - Follow the steps in the [Authentication with Access Tokens](https://docs.fastpix.io/docs/authentication-with-access-tokens) guide to obtain your credentials.
 
-# Installation:
+## Installation:
 
 To install the SDK, use pip with the GitHub repository URL to easily download and install the required libraries.
 
@@ -42,15 +42,15 @@ pip install git+https://github.com/FastPix/python-server-sdk
 ```
 (you may need to run `pip` with root permission)
 
-# Basic Usage:
+## Basic Usage:
 
-## Importing the SDK
+### Importing the SDK
 
 ```python
 from fastpix import Client
 ```
 
-## Initialization:
+### Initialization:
 
 Initialize the FastPix SDK with your API credentials.
 
@@ -60,7 +60,7 @@ from fastpix import Client
 client = Client(username="your-access-token-id", password="your-secret-key")
 ```
 
-## Example Usage:
+### Example Usage:
 
 Below is an example of configuring `FastPix Python SDK` into your project.
 
@@ -110,15 +110,15 @@ async def main():
 asyncio.run(main())
 ```
 
-# Usage:
+## Usage:
 
-## 1. Media Operations:
+### 1. Media Operations:
 
-### 1.1. Media Uploads:
+#### 1.1. Media Uploads:
 
-#### Upload Media from a URL:
+##### Upload Media from a URL:
 
-Use the `client.media.create_pull_video()` method to upload media directly from a URL. For detailed configuration options, refer to the [Create media from URL](https://docs.fastpix.io/reference/create-media) API documentation.
+Use the `client.media.create_pull_video()` method to upload media directly from a URL. For detailed configuration options, refer to the [Create media from URL](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/VideoOnDemand/UploadMedia.md#method-clientmediacreate_pull_video) API documentation.
 
 ```python
 # Define the request payload for uploading media from a URL.
@@ -138,9 +138,9 @@ media_response = client.media.create_pull_video(media_from_url_request)
 print("media_response", media_response)
 ```
 
-#### Upload Media from a Local Device:
+##### Upload Media from a Local Device:
 
-Use the `client.media.get_presigned_url()` method to obtain a `signedUrl` and upload media directly from a local device. For more details on configuration options, refer to the [Upload media from device](https://docs.fastpix.io/reference/direct-upload-video-media) API documentation.
+Use the `client.media.get_presigned_url()` method to obtain a `signedUrl` and upload media directly from a local device. For more details on configuration options, refer to the [Upload media from device](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/VideoOnDemand/UploadMedia.md#method-clientmediaget_presigned_url) API documentation.
 
 ```python
 # Define the request payload for uploading media from a device.
@@ -157,11 +157,11 @@ media_from_device_response = client.media.get_presigned_url(media_from_device_re
 print("Upload Response:", media_from_device_response)
 ```
 
-### 1.2. Media Management:
+#### 1.2. Media Management:
 
-#### Get List of All Media:
+##### Get List of All Media:
 
-Use the `client.media.get_all_media()` method to fetch a list of all media assets. You can customize the query by modifying parameters such as `limit`, `offset`, and `orderBy`. Refer to the [Get list of all media](https://docs.fastpix.io/reference/list-media) API documentation for the accepted values.
+Use the `client.media.get_all_media()` method to fetch a list of all media assets. You can customize the query by modifying parameters such as `limit`, `offset`, and `orderBy`. Refer to the [Get list of all media](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/VideoOnDemand/ManageMedia.md#method-clientmediaget_all_media) API documentation for the accepted values.
 
 ```python
 # Define the parameters for fetching media assets in a separate variable.
@@ -178,9 +178,9 @@ all_media_assets = client.media.get_all_media(media_request_params)
 print("All Media Assets:", all_media_assets)
 ```
 
-#### Get Media Asset by ID:
+##### Get Media Asset by ID:
 
-Use the `client.media.get_by_mediaId()` method to retrieve a specific media asset by its ID. Provide `media_id`of the asset to fetch its details. Refer to the [Get a media by ID](https://docs.fastpix.io/reference/get-media) API documentation for more details.
+Use the `client.media.get_by_mediaId()` method to retrieve a specific media asset by its ID. Provide `media_id`of the asset to fetch its details. Refer to the [Get a media by ID](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/VideoOnDemand/ManageMedia.md#method-clientmediaget_by_mediaid) API documentation for more details.
 
 ```python
 media_id = "media_id"  # Unique identifier for the media asset to be retrieved
@@ -191,9 +191,9 @@ get_media_asset = client.media.get_by_mediaId(media_id)
 print("Retrieved media asset by ID:", get_media_asset)
 ```
 
-#### Update Media Asset:
+##### Update Media Asset:
 
-Use the `client.media.update()` method to update metadata or other properties of a specific media asset. Provide the `media_id` of the asset along with the metadata to be updated. Refer to the [Update a media by ID](https://docs.fastpix.io/reference/updated-media) API documentation for more details.
+Use the `client.media.update()` method to update metadata or other properties of a specific media asset. Provide the `media_id` of the asset along with the metadata to be updated. Refer to the [Update a media by ID](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/VideoOnDemand/ManageMedia.md#method-clientmediaupdate) API documentation for more details.
 
 ```python
 media_id = "media_id"  # Unique identifier for the media asset to be retrieved
@@ -211,9 +211,9 @@ update_media_asset = client.media.update(media_id, update_payload)
 print("Updated Media Asset:", update_media_asset)
 ```
 
-#### Delete Media Asset:
+##### Delete Media Asset:
 
-Use the `client.media.delete()` method to delete a specific media asset by its ID. Pass the `media_id` of the asset you want to delete. Refer to the [Delete a media by ID](https://docs.fastpix.io/reference/delete-media) API documentation for more information.
+Use the `client.media.delete()` method to delete a specific media asset by its ID. Pass the `media_id` of the asset you want to delete. Refer to the [Delete a media by ID](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/VideoOnDemand/ManageMedia.md#method-clientmediadelete) API documentation for more information.
 
 ```python
 media_id = "media_id"  # Unique identifier for the media asset to be retrieved
@@ -225,9 +225,9 @@ delete_media_asset = client.media.delete(media_id)
 print("Deleted Media Asset:", delete_media_asset)
 ```
 
-#### Get Media Asset Info:
+##### Get Media Asset Info:
 
-Use the `client.media.get_media_info()` method to retrieve detailed information about a specific media asset. Pass the `media_id` to fetch its details. Refer to the [Get info of media inputs](https://docs.fastpix.io/reference/retrievemediainputinfo) API documentation for more details.
+Use the `client.media.get_media_info()` method to retrieve detailed information about a specific media asset. Pass the `media_id` to fetch its details. Refer to the [Get info of media inputs](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/VideoOnDemand/ManageMedia.md#method-clientmediaget_media_info) API documentation for more details.
 
 ```python
 media_id = "media_id"  # Unique identifier for the media asset to be retrieved
@@ -236,11 +236,11 @@ get_media_info =  client.media.get_media_info(media_id)
 print("Media Asset Info:", get_media_info)
 ```
 
-### 1.3. Manage Media Playback:
+#### 1.3. Manage Media Playback:
 
-#### Generate Media Playback ID:
+##### Generate Media Playback ID:
 
-Use the `client.media_playback_ids.create()` method to generate a playback ID for a specific media asset. You can pass an `media_id` and configure options such as the `accessPolicy`. For detailed configuration options, refer to the [Create a playback ID](https://docs.fastpix.io/reference/create-media-playback-id) API documentation.
+Use the `client.media_playback_ids.create()` method to generate a playback ID for a specific media asset. You can pass an `media_id` and configure options such as the `accessPolicy`. For detailed configuration options, refer to the [Create a playback ID](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/VideoOnDemand/ManageMediaPlayback.md#method-clientmedia_playback_idscreate) API documentation.
 
 ```python
 # Define the media_id and accessPolicy dynamically
@@ -256,9 +256,9 @@ playback_id_response = client.playback_ids.create(media_type, media_id, playback
 print("Playback ID Creation Response:", playback_id_response)
 ```
 
-#### Delete Media Playback ID:
+##### Delete Media Playback ID:
 
-Use the `client.media_playback_ids.delete()` method to delete a playback ID for a specific media asset. You need to pass both the `media_id` and the `playback_id` to delete the playback ID. For detailed configuration options, refer to the [Delete a playback ID](https://docs.fastpix.io/reference/delete-media-playback-id) API documentation.
+Use the `client.media_playback_ids.delete()` method to delete a playback ID for a specific media asset. You need to pass both the `media_id` and the `playback_id` to delete the playback ID. For detailed configuration options, refer to the [Delete a playback ID](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/VideoOnDemand/ManageMediaPlayback.md#method-clientmedia_playback_idsdelete) API documentation.
 
 ```python
 # Define the media_id and playback_id dynamically
@@ -273,11 +273,11 @@ print("Playback ID Deletion Response:", delete_playback_response)
 
 ----
 
-## 2. Live Stream Operations:
+### 2. Live Stream Operations:
 
-### 2.1. Start Live Stream:
+#### 2.1. Start Live Stream:
 
-Use the `client.livestreams.create()` method to start a live stream with specific configurations. For detailed configuration options, refer to the [Create a new stream](https://docs.fastpix.io/reference/create-new-stream) API documentation.
+Use the `client.livestreams.create()` method to start a live stream with specific configurations. For detailed configuration options, refer to the [Create a new stream](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/Live/CreateLiveStream.md#method-clientlivestreamscreate) API documentation.
 
 ```python
 livestream_request = {
@@ -300,11 +300,11 @@ generate_livestream = client.livestreams.create(livestream_request)
 print("Live Stream initiated successfully:", generate_livestream)
 ```
 
-### 2.2. Live Stream Management:
+#### 2.2. Live Stream Management:
 
-#### Get List of All Live Streams:
+##### Get List of All Live Streams:
 
-Use the `client.livestreams.list()` method to fetch a list of all live streams. You can customize the query by modifying parameters such as `limit`, `offset`, and `orderBy`. For detailed configuration options, refer to the [Get all live streams](https://docs.fastpix.io/reference/get-all-streams) API documentation.
+Use the `client.livestreams.list()` method to fetch a list of all live streams. You can customize the query by modifying parameters such as `limit`, `offset`, and `orderBy`. For detailed configuration options, refer to the [Get all live streams](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/Live/ManageLiveStreams.md#method-clientlivestreamslist) API documentation.
 
 ```python
 get_all_livestream_pagination = {
@@ -317,9 +317,9 @@ get_all_livestreams = client.livestreams.list(get_all_livestream_pagination)
 print("All Live Streams:", get_all_livestreams)
 ```
 
-#### Get Live Stream by ID:
+##### Get Live Stream by ID:
 
-Use the `client.livestreams.get()` method to retrieve a specific live stream by its ID. Provide the `stream_id` of the stream you wish to fetch. For more details, refer to the [Get stream by ID](https://docs.fastpix.io/reference/get-live-stream-by-id) API documentation.
+Use the `client.livestreams.get()` method to retrieve a specific live stream by its ID. Provide the `stream_id` of the stream you wish to fetch. For more details, refer to the [Get stream by ID](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/Live/ManageLiveStreams.md#method-clientlivestreamsget) API documentation.
 
 ```python
 stream_id =  "a09f3e958c16ed00e85bfe798abd9845" # Replace with actual stream ID
@@ -328,9 +328,9 @@ get_livestream_by_id = client.livestreams.get(stream_id)
 print("Live Stream Details:", get_livestream_by_id)
 ```
 
-#### Update Live Stream:
+##### Update Live Stream:
 
-Use the `client.livestreams.update()` method to update a live stream's configuration. Provide the `stream_id` of the stream and specify the fields you want to update. For more details, refer to the [Update a stream](https://docs.fastpix.io/reference/update-live-stream) API documentation.
+Use the `client.livestreams.update()` method to update a live stream's configuration. Provide the `stream_id` of the stream and specify the fields you want to update. For more details, refer to the [Update a stream](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/Live/ManageLiveStreams.md#method-clientlivestreamsupdate) API documentation.
 
 ```python
 stream_id = "a09f3e958c16ed00e85bfe798abd9845" # Provide the stream ID for the live stream to update
@@ -346,20 +346,20 @@ update_livestream = client.livestreams.update(stream_id,update_livestream_reques
 print("Updated Live Stream:", update_livestream)
 ```
 
-#### Delete Live Stream:
+##### Delete Live Stream:
 
-Use the `client.livestreams.delete()` method to delete a live stream by its ID. Provide `stream_id` of the stream you want to delete. For more details, refer to the [Delete a stream](https://docs.fastpix.io/reference/delete-live-stream) API documentation.
+Use the `client.livestreams.delete()` method to delete a live stream by its ID. Provide `stream_id` of the stream you want to delete. For more details, refer to the [Delete a stream](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/Live/ManageLiveStreams.md#method-clientlivestreamsdelete) API documentation.
 
 ```python
 delete_livestream = client.livestreams.delete("a09f3e958c16ed00e85bfe798abd9845")  # Provide the stream ID of the live stream to delete
 print("Deleted Live Stream:", delete_livestream)
 ```
 
-### 2.3. Manage Live Stream Playback:
+#### 2.3. Manage Live Stream Playback:
 
-#### Generate Live Stream Playback ID:
+##### Generate Live Stream Playback ID:
 
-Use the `client.livestream_playback_ids.create()` method to generate a playback ID for a live stream. Replace `stream_id` with the actual ID of the live stream and specify the desired `accessPolicy`. For more details, refer to the [Create a playback ID](https://docs.fastpix.io/reference/create-playbackid-of-stream) API documentation.
+Use the `client.livestream_playback_ids.create()` method to generate a playback ID for a live stream. Replace `stream_id` with the actual ID of the live stream and specify the desired `accessPolicy`. For more details, refer to the [Create a playback ID](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/Live/ManageStreamPlayback.md#method-clientlivestream_playback_idscreate) API documentation.
 
 ```python
 media_type = "livestream"
@@ -371,9 +371,9 @@ generate_livestream_playback_id = client.playback_ids.create(media_type, stream_
 print("Generated Live Stream Playback ID:", generate_livestream_playback_id)
 ```
 
-#### Delete Live Stream Playback ID:
+##### Delete Live Stream Playback ID:
 
-Use the `client.livestream_playback_ids.delete()` method to delete a specific playback ID for a live stream. You need to provide both the `stream_id` of the live stream and the `playback_id` to delete. For more details, refer to the [Delete a playback ID](https://docs.fastpix.io/reference/delete-playbackid-of-stream) API documentation.
+Use the `client.livestream_playback_ids.delete()` method to delete a specific playback ID for a live stream. You need to provide both the `stream_id` of the live stream and the `playback_id` to delete. For more details, refer to the [Delete a playback ID](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/Live/ManageStreamPlayback.md#method-clientlivestream_playback_idsdelete) API documentation.
 
 ```python
 media_type = "livestream"
@@ -385,9 +385,9 @@ delete_livestream_playback_id = client.playback_ids.delete(media_type, stream_id
 print("Deleted Live Stream Playback ID:", delete_livestream_playback_id)
 ```
 
-#### Get Live Stream Playback Policy:
+##### Get Live Stream Playback Policy:
 
-Use the `client.livestream_playback_ids.get()` method to retrieve the playback policy for a specific live stream playback ID. Replace `stream_id` with the stream's ID and `playback_id` with the actual playback ID to fetch the policy. For more details, refer to the [Get stream's playback ID](https://docs.fastpix.io/reference/get-live-stream-playback-id) API documentation.
+Use the `client.livestream_playback_ids.get()` method to retrieve the playback policy for a specific live stream playback ID. Replace `stream_id` with the stream's ID and `playback_id` with the actual playback ID to fetch the policy. For more details, refer to the [Get stream's playback ID](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/Live/ManageStreamPlayback.md#method-clientlivestream_playback_idsget) API documentation.
 
 ```python
 media_type = "livestream"
@@ -399,11 +399,11 @@ get_livestream_playback_policy = client.playback_ids.get(media_type, stream_id, 
 print("Live Stream Playback Policy:", get_livestream_playback_policy )
 ```
 
-### 2.4. Manage Live Stream Simulcast:
+#### 2.4. Manage Live Stream Simulcast:
 
-#### Initiate Live Stream Simulcast:
+##### Initiate Live Stream Simulcast:
 
-Use the `client.livestreams.create_simulcast()` method to create a new simulcast for a live stream. Provide the stream ID and simulcast payload with the URL and stream key. For more details, refer to the [Create a simulcast](https://docs.fastpix.io/reference/create-simulcast-of-stream) API documentation.
+Use the `client.livestreams.create_simulcast()` method to create a new simulcast for a live stream. Provide the stream ID and simulcast payload with the URL and stream key. For more details, refer to the [Create a simulcast](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/Live/ManageStreamSimulcast.md#method-clientlivestreamscreate_simulcast) API documentation.
 
 ```python
 simulcast_payload = {
@@ -418,9 +418,9 @@ generate_simulcast = client.livestreams.create_simulcast(stream_id, simulcast_pa
 print("Generate Simulcast:", generate_simulcast)
 ```
 
-#### Get Live Stream Simulcast:
+##### Get Live Stream Simulcast:
 
-Use the `client.livestreams.get_simulcast()` method to retrieve details of a specific simulcast stream. Provide the `stream_id` and `simulcast_id` of the simulcast you want to fetch. For more details, refer to the [Get a specific simulcast of a stream](https://docs.fastpix.io/reference/get-specific-simulcast-of-stream) API documentation.
+Use the `client.livestreams.get_simulcast()` method to retrieve details of a specific simulcast stream. Provide the `stream_id` and `simulcast_id` of the simulcast you want to fetch. For more details, refer to the [Get a specific simulcast of a stream](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/Live/ManageStreamSimulcast.md#method-clientlivestreamsget_simulcast) API documentation.
 
 ```python
 stream_id = "a09f3e958c16ed00e85bfe798abd9845"  # Replace with actual stream ID
@@ -431,9 +431,9 @@ get_livestream_simulcast = client.livestreams.get_simulcast(stream_id, simulcast
 print("Live Stream Simulcast Details:", get_livestream_simulcast )
 ```
 
-#### Update Live Stream Simulcast:
+##### Update Live Stream Simulcast:
 
-Use the `client.livestreams.update_simulcast()` method to update the configuration of a simulcast stream. Provide the `stream_id`, `simulcast_id`, and the fields you want to update. For more details, refer to the [Update a specific simulcast of a stream](https://docs.fastpix.io/reference/update-specific-simulcast-of-stream) API documentation.
+Use the `client.livestreams.update_simulcast()` method to update the configuration of a simulcast stream. Provide the `stream_id`, `simulcast_id`, and the fields you want to update. For more details, refer to the [Update a specific simulcast of a stream](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/Live/ManageStreamSimulcast.md#method-clientlivestreamsupdate_simulcast) API documentation.
 
 ```python
 stream_id = "a09f3e958c16ed00e85bfe798abd9845"  # Replace with actual stream ID
@@ -451,9 +451,9 @@ update_live_simulcast = client.livestreams.update_simulcast(stream_id, simulcast
 print("Updated Live Stream Simulcast:", update_live_simulcast)
 ```
 
-#### Delete Live Stream Simulcast:
+##### Delete Live Stream Simulcast:
 
-Use the `client.livestreams.delete_simulcast()` method to remove a specific simulcast from a live stream. Provide the `stream_id` and `simulcast_id` for the simulcast you want to delete. For more details, refer to the [Delete a simulcast](https://docs.fastpix.io/reference/delete-simulcast-of-stream) API documentation.
+Use the `client.livestreams.delete_simulcast()` method to remove a specific simulcast from a live stream. Provide the `stream_id` and `simulcast_id` for the simulcast you want to delete. For more details, refer to the [Delete a simulcast](https://github.com/FastPix/python-server-sdk/blob/main/fastpix/docs/Live/ManageStreamSimulcast.md#method-deletelivestreamsimulcast) API documentation.
 
 ```python
 stream_id = "a09f3e958c16ed00e85bfe798abd9845"  # Replace with actual stream ID
@@ -464,7 +464,7 @@ delete_live_simulcast = client.livestreams.delete_simulcast(stream_id, simulcast
 print("Deleted Live Stream Simulcast:", delete_live_simulcast)
 ```
 
-## Detailed Usage:
+### Detailed Usage:
 
 For a complete understanding of each API's functionality, including request and response details, parameter descriptions, and additional examples, please refer to the [FastPix API Reference](https://docs.fastpix.io/reference/signingkeys-overview).
 
